@@ -28,7 +28,7 @@ include Ribimaybe::Maybe
 Just(42).map { |x| x * x } # => Just(1764)
 Nothing.map  { |x| x * x } # => Nothing
 
-# Pull a value out of Maybe.
+# You can safely pull a value out of a Maybe or return a default.
 Just(42).maybe(false) { |x| x == 42 } # => true
 Nothing.maybe(false)  { |x| x == 42 } # => false 
 ```
