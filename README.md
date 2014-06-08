@@ -1,6 +1,7 @@
 # Ribimaybe
 
-TODO: Write a gem description
+A tiny Ruby library that provides the Maybe datatype which is a Functor, 
+Applicative Functor and Monad instance.
 
 ## Installation
 
@@ -18,7 +19,19 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Functor
+
+``` ruby
+include Ribimaybe::Maybe
+
+# Apply functions within Maybe and retain structure.
+Just(42).map { |x| x * x } # => Just(1764)
+Nothing.map  { |x| x * x } # => Nothing
+
+# Pull a value out of Maybe.
+Just(42).maybe(false) { |x| x == 42 } # => true
+Nothing.maybe(false)  { |x| x == 42 } # => false 
+```
 
 ## Contributing
 

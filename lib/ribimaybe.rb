@@ -9,6 +9,10 @@ module Ribimaybe
     module Nothing
       include Contracts
 
+      def self.to_s
+        "Nothing"
+      end
+
       Contract Any, Proc => Any
       def self.maybe(default, &fn)
         default
