@@ -17,4 +17,20 @@ describe "Applicative Instance" do
       end
     end
   end
+
+  describe "#apply" do
+    context "when i have nothing" do
+      it "should give me back nothing" do
+        result = Nothing.apply Just(42)
+        expect(result).to eq Nothing
+      end
+    end
+
+    context "when i something containing a fn" do
+      it "should be apply to apply that fn to something" do
+        result = Just(-> x { x + x }).apply(Just(21))
+        expect(result).to eq Just(42)
+      end
+    end
+  end
 end
