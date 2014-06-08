@@ -1,8 +1,6 @@
 require "contracts"
 
 module Ribimaybe
-  VERSION = "0.0.1"
-
   module Maybe
     include Contracts
 

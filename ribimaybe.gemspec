@@ -1,7 +1,7 @@
 # coding: utf-8
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "ribimaybe"
+require "version"
 
 Gem::Specification.new do |spec|
   spec.name          = "ribimaybe"
@@ -22,4 +22,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"
+  spec.add_runtime_dependency     "contracts", "~> 0.4"
 end
