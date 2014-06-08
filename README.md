@@ -1,5 +1,6 @@
 # Ribimaybe
 
+[![Gem Version](https://badge.fury.io/rb/ribimaybe.svg)](http://badge.fury.io/rb/ribimaybe)
 [![Travis](https://travis-ci.org/unsymbol/ribimaybe.svg?branch=master)](http://travis-ci.org/unsymbol/ribimaybe)
 [![Code Climate](https://codeclimate.com/github/unsymbol/ribimaybe.png)](https://codeclimate.com/github/unsymbol/ribimaybe)
 
