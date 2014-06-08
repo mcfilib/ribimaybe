@@ -6,7 +6,7 @@ module Ribimaybe
   module Maybe
     include Contracts
 
-    class Nothing
+    module Nothing
       include Contracts
 
       Contract Any, Proc => Any
@@ -14,19 +14,19 @@ module Ribimaybe
         default
       end
 
-      Contract Proc => Any
+      Contract Proc => Nothing
       def self.map(&fn)
-        Nothing
+        self
       end
 
-      Contract Any => Any
+      Contract Any => Nothing
       def self.apply(value)
-        Nothing
+        self
       end
 
-      Contract Proc => Any
+      Contract Proc => Nothing
       def self.bind(&fn)
-        Nothing
+        self
       end
     end
 
@@ -69,19 +69,23 @@ module Ribimaybe
       end
     end
 
+    Contract Any, Any => Or[Nothing, Just]
     def Maybe(value = nil, &fn)
       value ? Just(value || fn) : Nothing
     end
 
+    Contract Any, Any => Or[Nothing, Just]
     def Just(value = nil, &fn)
       return Nothing unless (value || fn)
       Just.new(value || fn)
     end
 
+    Contract Any => Or[Nothing, Just]
     def pure(value)
       Maybe(value)
     end
 
+    Contract Any => Or[Nothing, Just]
     def rturn(value)
       pure(value)
     end
