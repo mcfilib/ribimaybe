@@ -1,4 +1,3 @@
-source 'https://rubygems.org'
-
-# Specify your gem's dependencies in ribimaybe.gemspec
+source "https://rubygems.org"
 gemspec
+gem "contracts", "~> 0.4"
