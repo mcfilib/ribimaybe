@@ -33,6 +33,21 @@ Just(42).maybe(false) { |x| x == 42 } # => true
 Nothing.maybe(false)  { |x| x == 42 } # => false 
 ```
 
+### Applicative Functor
+
+``` ruby
+include Ribimaybe::Maybe
+
+# Wrap functions inside functors and apply them to other functors! 
+Just do |x|
+  x * x
+end.apply(Just(42)) # => Just(1764)
+
+Just do |x|
+  x * x
+end.apply(Nothing) # => Nothing
+```
+
 ## Contributing
 
 1. Fork it
