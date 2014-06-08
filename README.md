@@ -19,7 +19,7 @@ Or install it yourself as:
 
 ## Usage
 
-### Functor
+### [Functor](http://learnyouahaskell.com/functors-applicative-functors-and-monoids)
 
 ``` ruby
 include Ribimaybe::Maybe
@@ -33,7 +33,7 @@ Just(42).maybe(false) { |x| x == 42 } # => true
 Nothing.maybe(false)  { |x| x == 42 } # => false 
 ```
 
-### Applicative Functor
+### [Applicative Functor](http://learnyouahaskell.com/functors-applicative-functors-and-monoids)
 
 ``` ruby
 include Ribimaybe::Maybe
@@ -48,7 +48,7 @@ Just do |x|
 end.apply(Nothing) # => Nothing
 ```
 
-### Monad
+### [Applicative Functor](http://www.learnyouahaskell.com/a-fistful-of-monads)
 
 ``` ruby
 include Ribimaybe::Maybe
