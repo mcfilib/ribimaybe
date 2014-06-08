@@ -59,6 +59,7 @@ module Ribimaybe
     end
 
     class Just
+      Contract Proc => Just
       def map(&fn)
         Just.new(fn.(@value))
       end
@@ -73,6 +74,7 @@ module Ribimaybe
     end
 
     class Just
+      Contract Or[Nothing, Just] => Or[Nothing, Just]
       def apply(value)
         value.map { |v| @value.(v) }
       end
@@ -91,6 +93,7 @@ module Ribimaybe
     end
 
     class Just
+      Contract Proc => Just
       def bind(&fn)
         fn.(@value)
       end
