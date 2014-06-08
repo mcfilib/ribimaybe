@@ -64,7 +64,6 @@ end # => Just(42)
 Nothing.bind do |x|
   rturn(x * x)
 end # => Nothing
-
 ```
 ## Contributing
 
