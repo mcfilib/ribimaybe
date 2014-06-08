@@ -69,12 +69,12 @@ module Ribimaybe
       end
     end
 
-    Contract Any, Any => Or[Nothing, Just]
+    Contract Any, Or[nil, Proc] => Or[Nothing, Just]
     def Maybe(value = nil, &fn)
       value ? Just(value || fn) : Nothing
     end
 
-    Contract Any, Any => Or[Nothing, Just]
+    Contract Any, Or[nil, Proc] => Or[Nothing, Just]
     def Just(value = nil, &fn)
       return Nothing unless (value || fn)
       Just.new(value || fn)
