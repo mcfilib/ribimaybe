@@ -6,10 +6,12 @@ module Ribimaybe
   module Maybe
     class Nothing
       include Contracts
+      Contract Any, Proc => Any
       def self.maybe(default, &fn)
         default
       end
 
+      Contract nil => String
       def self.to_s
         "Nothing"
       end
@@ -21,14 +23,17 @@ module Ribimaybe
         @value = value
       end
 
+      Contract Any, Proc => Any
       def maybe(default, &fn)
         fn.(@value)
       end
 
+      Contract nil => String
       def to_s
         "Just(#{@value.inspect})"
       end
 
+      Contract Or[Nothing, Just] => Bool
       def ==(other)
         other.maybe(false) do |value|
           @value == value
