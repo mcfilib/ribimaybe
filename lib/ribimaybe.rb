@@ -15,6 +15,18 @@ module Ribimaybe
       def self.to_s
         "Nothing"
       end
+
+      def self.map(&fn)
+        self
+      end
+
+      def self.apply(value)
+        self
+      end
+
+      def self.bind(&fn)
+        self
+      end
     end
 
     class Just
@@ -39,6 +51,21 @@ module Ribimaybe
           @value == value
         end
       end
+
+      Contract Proc => Just
+      def map(&fn)
+        Just.new(fn.(@value))
+      end
+
+      Contract Or[Nothing, Just] => Or[Nothing, Just]
+      def apply(value)
+        value.map { |v| @value.(v) }
+      end
+
+      Contract Proc => Just
+      def bind(&fn)
+        fn.(@value)
+      end
     end
 
     def Maybe(value = nil, &fn)
@@ -49,54 +76,9 @@ module Ribimaybe
       return Nothing unless (value || fn)
       Just.new(value || fn)
     end
-  end
-
-  module Maybe
-    class Nothing
-      def self.map(&fn)
-        self
-      end
-    end
-
-    class Just
-      Contract Proc => Just
-      def map(&fn)
-        Just.new(fn.(@value))
-      end
-    end
-  end
-
-  module Maybe
-    class Nothing
-      def self.apply(value)
-        self
-      end
-    end
-
-    class Just
-      Contract Or[Nothing, Just] => Or[Nothing, Just]
-      def apply(value)
-        value.map { |v| @value.(v) }
-      end
-    end
 
     def pure(value)
       Maybe(value)
-    end
-  end
-
-  module Maybe
-    class Nothing
-      def self.bind(&fn)
-        self
-      end
-    end
-
-    class Just
-      Contract Proc => Just
-      def bind(&fn)
-        fn.(@value)
-      end
     end
 
     def rturn(value)
