@@ -48,6 +48,22 @@ Just do |x|
 end.apply(Nothing) # => Nothing
 ```
 
+### Monad
+
+``` ruby
+include Ribimaybe::Maybe
+
+Just(42).bind do |x|
+  rturn(x - 21)
+end.bind do |x|
+  rturn(x * 2)
+end # => Just(42)
+
+Nothing.bind do |x|
+  rturn(x * x)
+end # => Nothing
+
+```
 ## Contributing
 
 1. Fork it
