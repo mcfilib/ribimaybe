@@ -33,6 +33,13 @@ describe "Applicative Instance" do
         end.apply Just(21)
         expect(result).to eq Just(42)
       end
+
+      it "should be curried by default" do
+        result = Just do |x, y|
+          x + y
+        end.apply(Just(21)).apply(Just(21))
+        expect(result).to eq Just(42)
+      end
     end
   end
 end
