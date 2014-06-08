@@ -28,7 +28,9 @@ describe "Applicative Instance" do
 
     context "when i something containing a fn" do
       it "should be apply to apply that fn to something" do
-        result = Just(-> x { x + x }).apply(Just(21))
+        result = Just do |x|
+          x + x
+        end.apply Just(21)
         expect(result).to eq Just(42)
       end
     end

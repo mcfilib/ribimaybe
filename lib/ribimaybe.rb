@@ -32,12 +32,12 @@ module Ribimaybe
       end
     end
 
-    def Maybe(value)
-      value ? Just(value) : Nothing
+    def Maybe(value = nil, &fn)
+      value ? Just(value || fn) : Nothing
     end
 
-    def Just(value)
-      Just.new(value)
+    def Just(value = nil, &fn)
+      Just.new(value || fn)
     end
   end
 
