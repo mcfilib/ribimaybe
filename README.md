@@ -1,5 +1,8 @@
 # Ribimaybe
 
+[![Travis](https://travis-ci.org/unsymbol/ribimaybe.svg?branch=master)](http://travis-ci.org/unsymbol/ribimaybe)
+[![Code Climate](https://codeclimate.com/github/unsymbol/ribimaybe.png)](https://codeclimate.com/github/unsymbol/ribimaybe)
+
 ![](maybe.gif)
 
 A tiny Ruby library that provides a Maybe datatype which is a Functor, 
