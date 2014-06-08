@@ -4,8 +4,11 @@ module Ribimaybe
   VERSION = "0.0.1"
 
   module Maybe
+    include Contracts
+
     class Nothing
       include Contracts
+
       Contract Any, Proc => Any
       def self.maybe(default, &fn)
         default
@@ -29,16 +32,11 @@ module Ribimaybe
 
     class Just
       include Contracts
+
       def initialize(value)
         @value = value
       end
 
-      Contract Any, Proc => Any
-      def maybe(default, &fn)
-        fn.(@value)
-      end
-
-      Contract nil => String
       def to_s
         "Just(#{@value.inspect})"
       end
@@ -48,6 +46,11 @@ module Ribimaybe
         other.maybe(false) do |value|
           @value == value
         end
+      end
+
+      Contract Any, Proc => Any
+      def maybe(default, &fn)
+        fn.(@value)
       end
 
       Contract Proc => Just
