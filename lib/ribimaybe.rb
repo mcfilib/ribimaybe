@@ -37,6 +37,7 @@ module Ribimaybe
     end
 
     def Just(value = nil, &fn)
+      return Nothing unless (value || fn)
       Just.new(value || fn)
     end
   end
