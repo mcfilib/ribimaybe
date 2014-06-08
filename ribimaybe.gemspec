@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Ribimaybe::VERSION
   spec.authors       = ["unsymbol"]
   spec.email         = ["hello@philipcunningham.org"]
-  spec.description   = "Maybe Datatype"
-  spec.summary       = "Maybe as a Functor, Applicative and Monad in Ruby"
+  spec.description   = "Maybe Functor, Applicative and Monad"
+  spec.summary       = "A tiny Ruby library that provides a Maybe datatype which is a Functor, Applicative Functor and Monad instance."
   spec.homepage      = "https://github.com/unsymbol/ribimaybe"
   spec.license       = "MIT"
 
