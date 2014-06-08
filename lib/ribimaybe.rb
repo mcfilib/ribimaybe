@@ -102,7 +102,7 @@ module Ribimaybe
       #
       Contract Proc => Just
       def map(&fn)
-        Just.new(fn.(@value))
+        Just.new(fn.curry.(@value))
       end
 
       # Applies fn inside Just to a value in another Just and re-wraps the
