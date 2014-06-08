@@ -60,9 +60,9 @@ Nothing.map  { |x| x * x } # => Nothing
 include Ribimaybe::Maybe
 
 # Wrap functions inside functors and apply them to other functors! 
-Just do |x|
-  x * x
-end.apply(pure(42)) # => Just(1764)
+Just do |x, y|
+  x * y
+end.apply(pure(42)).apply(pure(42)) # => Just(1764)
 
 Just do |x|
   x * x

@@ -28,9 +28,16 @@ describe "Applicative Instance" do
 
     context "when i something containing a fn" do
       it "should be apply to apply that fn to something" do
-        result = Just do |x|
+        result = pure do |x|
           x + x
         end.apply Just(21)
+        expect(result).to eq Just(42)
+      end
+
+      it "should be curried by default" do
+        result = pure do |x, y|
+          x + y
+        end.apply(Just(21)).apply(Just(21))
         expect(result).to eq Just(42)
       end
     end
