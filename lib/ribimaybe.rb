@@ -68,8 +68,9 @@ module Ribimaybe
 
   module Maybe
     class Nothing
+      # Contract Or[Nothing, Just] => Nothing
       def self.apply(value)
-        self
+        Nothing
       end
     end
 
@@ -87,8 +88,9 @@ module Ribimaybe
 
   module Maybe
     class Nothing
+      # Contract Proc => Nothing
       def self.bind(&fn)
-        self
+        Nothing
       end
     end
 
