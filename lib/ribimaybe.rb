@@ -15,17 +15,17 @@ module Ribimaybe
       end
 
       Contract Proc => Nothing
-      def self.map(&fn)
+      def self.map(&_)
         self
       end
 
       Contract Any => Nothing
-      def self.apply(value)
+      def self.apply(_)
         self
       end
 
       Contract Proc => Nothing
-      def self.bind(&fn)
+      def self.bind(&_)
         self
       end
     end
@@ -49,7 +49,7 @@ module Ribimaybe
       end
 
       Contract Any, Proc => Any
-      def maybe(default, &fn)
+      def maybe(_, &fn)
         fn.(@value)
       end
 
