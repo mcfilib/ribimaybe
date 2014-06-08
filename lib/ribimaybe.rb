@@ -24,6 +24,12 @@ module Ribimaybe
       def to_s
         "Just(#{@value.inspect})"
       end
+
+      def ==(other)
+        other.maybe(false) do |value|
+          @value == value
+        end
+      end
     end
 
     def Maybe(value)
