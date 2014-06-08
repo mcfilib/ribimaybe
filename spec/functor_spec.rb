@@ -2,7 +2,6 @@ require "spec_helper"
 include Ribimaybe::Maybe
 
 describe "Functor Instance" do
-
   describe "#map" do
     context "when i have nothing" do
       it "should give me back nothing" do
@@ -18,5 +17,4 @@ describe "Functor Instance" do
       end
     end
   end
-
 end
