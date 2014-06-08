@@ -11,22 +11,17 @@ module Ribimaybe
         default
       end
 
-      Contract nil => String
-      def self.to_s
-        "Nothing"
-      end
-
-      # Contract Proc => Nothing
+      Contract Proc => Any
       def self.map(&fn)
         Nothing
       end
 
-      # Contract Or[Nothing, Just] => Nothing
+      Contract Any => Any
       def self.apply(value)
         Nothing
       end
 
-      # Contract Or[Nothing, Just] => Nothing
+      Contract Proc => Any
       def self.bind(&fn)
         Nothing
       end
