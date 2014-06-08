@@ -157,7 +157,7 @@ module Ribimaybe
     #
     Contract Any, Or[nil, Proc] => Or[Nothing, Just]
     def Maybe(value = nil, &fn)
-      (value || fn) ? Just(value || fn) : Nothing
+      (value || fn) ? Just(value || fn.curry) : Nothing
     end
 
     # Wraps a value or a function in a Just or returns a Nothing.
