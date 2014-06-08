@@ -1,8 +1,11 @@
+require "contracts"
+
 module Ribimaybe
   VERSION = "0.0.1"
 
   module Maybe
     class Nothing
+      include Contracts
       def self.maybe(default, &fn)
         default
       end
@@ -13,6 +16,7 @@ module Ribimaybe
     end
 
     class Just
+      include Contracts
       def initialize(value)
         @value = value
       end
