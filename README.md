@@ -41,7 +41,7 @@ include Ribimaybe::Maybe
 # Wrap functions inside functors and apply them to other functors! 
 Just do |x|
   x * x
-end.apply(Just(42)) # => Just(1764)
+end.apply(pure(42)) # => Just(1764)
 
 Just do |x|
   x * x
