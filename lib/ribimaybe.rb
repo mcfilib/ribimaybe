@@ -157,29 +157,11 @@ module Ribimaybe
     #
     Contract Any, Or[nil, Proc] => Or[Nothing, Just]
     def Maybe(value = nil, &fn)
-      (value || fn) ? Just(value || fn.curry) : Nothing
+      (value || fn) ? Just.new(value || fn.curry) : Nothing
     end
 
-    # Wraps a value or a function in a Just or returns a Nothing.
-    #
-    # ==== Attributes
-    #
-    # * +value+ - Value to be wrapped.
-    # * +fn+    - Block or function to be wrapped.
-    #
-    # ==== Examples
-    #
-    # Just(nil)      # => Nothing
-    # Just(1)        # => Just(1)
-    # Just { |x| x } # => Just(#<Proc:0x007fdecc03a478@(irb):6>)
-    #
-    Contract Any, Or[nil, Proc] => Or[Nothing, Just]
-    def Just(value = nil, &fn)
-      return Nothing unless (value || fn)
-      Just.new(value || fn.curry)
-    end
-
-    alias_method :pure,  :Just
-    alias_method :rturn, :Just
+    alias_method :Just,  :Maybe
+    alias_method :pure,  :Maybe
+    alias_method :rturn, :Maybe
   end
 end
