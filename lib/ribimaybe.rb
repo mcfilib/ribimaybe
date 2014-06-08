@@ -179,36 +179,7 @@ module Ribimaybe
       Just.new(value || fn.curry)
     end
 
-    # Wraps a value in a Just or returns a Nothing.
-    #
-    # ==== Attributes
-    #
-    # * +value+ - Value to be wrapped.
-    #
-    # ==== Examples
-    #
-    # pure(nil) # => Nothing
-    # pure(1)   # => Just(1)
-    #
-    Contract Any => Or[Nothing, Just]
-    def pure(value)
-      Maybe(value)
-    end
-
-    # Wraps a value in a Just or returns a Nothing.
-    #
-    # ==== Attributes
-    #
-    # * +value+ - Value to be wrapped.
-    #
-    # ==== Examples
-    #
-    # rturn(nil) # => Nothing
-    # rturn(1)   # => Just(1)
-    #
-    Contract Any => Or[Nothing, Just]
-    def rturn(value)
-      pure(value)
-    end
+    alias_method :pure,  :Just
+    alias_method :rturn, :Just
   end
 end
