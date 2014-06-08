@@ -16,16 +16,19 @@ module Ribimaybe
         "Nothing"
       end
 
+      # Contract Proc => Nothing
       def self.map(&fn)
-        self
+        Nothing
       end
 
+      # Contract Or[Nothing, Just] => Nothing
       def self.apply(value)
-        self
+        Nothing
       end
 
+      # Contract Or[Nothing, Just] => Nothing
       def self.bind(&fn)
-        self
+        Nothing
       end
     end
 
