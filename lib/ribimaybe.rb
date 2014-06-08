@@ -1,6 +1,6 @@
-require "ribimaybe/version"
-
 module Ribimaybe
+  VERSION = "0.0.1"
+
   module Maybe
     class Nothing
       def self.maybe(default, &fn)
