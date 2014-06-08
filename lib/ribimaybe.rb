@@ -121,7 +121,7 @@ module Ribimaybe
       #
       Contract Or[Nothing, Just] => Or[Nothing, Just]
       def apply(value)
-        value.map { |v| @value.(v) }
+        value.map { |v| @value.curry.(v) }
       end
 
       # Applies fn to value inside Just (note contract constraint).
@@ -138,7 +138,7 @@ module Ribimaybe
       #
       Contract Proc => Just
       def bind(&fn)
-        fn.(@value)
+        fn.curry.(@value)
       end
     end
 
