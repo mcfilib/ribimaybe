@@ -53,12 +53,14 @@ end.apply(Nothing) # => Nothing
 ``` ruby
 include Ribimaybe::Maybe
 
+# Chain together computations and pretend you're a Haskeller.
 Just(42).bind do |x|
   rturn(x - 21)
 end.bind do |x|
   rturn(x * 2)
 end # => Just(42)
 
+# You guessed it! If have Nothing, you get Nothing.
 Nothing.bind do |x|
   rturn(x * x)
 end # => Nothing
