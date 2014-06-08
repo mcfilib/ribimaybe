@@ -12,8 +12,8 @@ describe "Functor Instance" do
 
     context "when i have something" do
       it "should apply the fn and we-wrap the value" do
-        result = Just.new(41).map { |x| x + 1 }
-        expect(result).to eq Just.new(42)
+        result = Just(41).map { |x| x + 1 }
+        expect(result).to eq Just(42)
       end
     end
   end

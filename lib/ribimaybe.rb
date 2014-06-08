@@ -33,7 +33,11 @@ module Ribimaybe
     end
 
     def Maybe(value)
-      value ? Just.new(value) : Nothing
+      value ? Just(value) : Nothing
+    end
+
+    def Just(value)
+      Just.new(value)
     end
   end
 
