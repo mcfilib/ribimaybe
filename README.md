@@ -19,6 +19,19 @@ Or install it yourself as:
 
 ## Usage
 
+This is a small library and so it doesn't offer lots of creature comforts. The 
+one escape hatch it does offer is the ability to convert `nil` into `Nothing`. 
+
+``` ruby
+include Ribimaybe::Maybe
+
+Maybe(42)  # => Just(42)
+Maybe(nil) # => Nothing
+```
+
+And that's it, once you have lifted your value into a `Maybe` you can treat it 
+as a `Functor`, `Applicative Functor` or `Monad`.
+
 ### [Functor](http://learnyouahaskell.com/functors-applicative-functors-and-monoids)
 
 ``` ruby
