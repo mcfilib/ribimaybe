@@ -77,8 +77,8 @@ module Ribimaybe
       #
       # ==== Attributes
       #
-      # * +_+  - Irrelevant default.
-      # * +fn+ - Function to be applied inside our Just.
+      # * +_+  - Default value that's never used.
+      # * +fn+ - Function to be applied to value inside Just.
       #
       # ==== Examples
       #
@@ -98,19 +98,20 @@ module Ribimaybe
       #
       # ==== Examples
       #
-      # Just(1).map { |x| x + 1 } # => Just(2)
+      # Just(1).map { |x| x + 1 }               # => Just(2)
+      # Just { |x, y| x + y }.map { |f| f.(1) } # => Just(#<Proc:...>)
       #
       Contract Proc => Just
       def map(&fn)
         Just.new(fn.curry.(@value))
       end
 
-      # Applies fn inside Just to a value in another Just and re-wraps the
-      # result in another Just.
+      # Applies fn inside Just to a value in a Just and re-wraps the result in
+      # a Just. Note that functions are curried by default.
       #
       # ==== Attributes
       #
-      # * +value+ - Maybe whose value will be use in function application.
+      # * +value+ - Maybe value.
       #
       # ==== Examples
       #
@@ -141,8 +142,8 @@ module Ribimaybe
       end
     end
 
-    # Converts nil to Nothing or lifts value into a Just. Pass either a block
-    # or a function.
+    # Converts nil to Nothing or lifts value into a Just. Accepts a optional
+    # block or value.
     #
     # ==== Attributes
     #
