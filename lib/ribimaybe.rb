@@ -87,7 +87,7 @@ module Ribimaybe
       #
       Contract Any, Proc => Any
       def maybe(_, &fn)
-        fn.(@value)
+        fn.curry.(@value)
       end
 
       # Applies fn to a value inside Just and re-wraps it in another Just.
