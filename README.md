@@ -1,5 +1,7 @@
 # Ribimaybe
 
+![](maybe.gif)
+
 A tiny Ruby library that provides the Maybe datatype which is a Functor, 
 Applicative Functor and Monad instance.
 
