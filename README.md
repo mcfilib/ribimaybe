@@ -32,7 +32,13 @@ Maybe(nil) # => Nothing
 ```
 
 And that's it, once you have lifted your value into a `Maybe` you can treat it 
-as a `Functor`, `Applicative Functor` or `Monad`.
+as a `Functor`, `Applicative Functor` or `Monad`. If you want to pull your value
+out of a `Maybe`, we got you covered too.
+
+``` ruby
+Just(42).maybe(false) { |x| x == 42 } # => true
+Nothing.maybe(false)  { |x| x == 42 } # => false 
+```
 
 ### Functor [\[info\]](http://learnyouahaskell.com/functors-applicative-functors-and-monoids)
 
@@ -42,10 +48,6 @@ include Ribimaybe::Maybe
 # Apply functions within Maybe and retain structure.
 Just(42).map { |x| x * x } # => Just(1764)
 Nothing.map  { |x| x * x } # => Nothing
-
-# You can safely pull a value out of a Maybe or return a default.
-Just(42).maybe(false) { |x| x == 42 } # => true
-Nothing.maybe(false)  { |x| x == 42 } # => false 
 ```
 
 ### Applicative Functor [\[info\]](http://learnyouahaskell.com/functors-applicative-functors-and-monoids)
