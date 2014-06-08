@@ -176,7 +176,7 @@ module Ribimaybe
     Contract Any, Or[nil, Proc] => Or[Nothing, Just]
     def Just(value = nil, &fn)
       return Nothing unless (value || fn)
-      Just.new(value || fn)
+      Just.new(value || fn.curry)
     end
 
     # Wraps a value in a Just or returns a Nothing.
