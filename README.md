@@ -61,7 +61,7 @@ Just do |x|
 end.apply(Nothing) # => Nothing
 ```
 
-### [Applicative Functor](http://www.learnyouahaskell.com/a-fistful-of-monads)
+### [Monad](http://www.learnyouahaskell.com/a-fistful-of-monads)
 
 ``` ruby
 include Ribimaybe::Maybe
