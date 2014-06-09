@@ -38,7 +38,6 @@ describe "Applicative Instance" do
     end
   end
 
-
   describe "composition" do
     context "when i have nothing" do
       it do
@@ -53,6 +52,14 @@ describe "Applicative Instance" do
         lhs = pure(&dot).apply(pure(&f)).apply(pure(&g)).apply(Just(:x))
         rhs = pure(&f).apply(pure(&g).apply(Just(:x)))
         expect(lhs).to eq(rhs)
+      end
+    end
+  end
+
+  describe "homomorphism" do
+    context "when i have just :x" do
+      it do
+        expect(pure(&f).apply(pure(:x))).to eq(pure(:x))
       end
     end
   end
