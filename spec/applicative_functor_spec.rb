@@ -3,11 +3,6 @@ include Ribimaybe::Maybe
 
 describe "Applicative Instance" do
 
- #  pure id <*> v = v                            -- Identity
- #  pure (.) <*> u <*> v <*> w = u <*> (v <*> w) -- Composition
- #  pure f <*> pure x = pure (f x)               -- Homomorphism
- #  u <*> pure y = pure ($ y) <*> u              -- Interchange
-
   let(:id) do
     ->(x){ x }
   end
@@ -66,6 +61,19 @@ describe "Applicative Instance" do
     context "when i have just :x" do
       it do
         expect(pure(&f).apply(pure(:x))).to eq(pure(:x))
+      end
+    end
+  end
+
+  #  u <*> pure y = pure ($ y) <*> u              -- Interchange
+  describe "interchange" do
+    context "when i have nothing" do
+      it do
+      end
+    end
+
+    context "when i have just :x" do
+      it do
       end
     end
   end
