@@ -8,11 +8,11 @@ describe "Functor Instance" do
   end
 
   let(:f) do
-    ->(y){ :y }.extend(Composable)
+    ->(x){ ->(y) { x } }.(SecureRandom.base64(1000)).extend(Composable)
   end
 
   let(:g) do
-    ->(x){ :x }.extend(Composable)
+    ->(x){ ->(y) { x } }.(SecureRandom.base64(1000)).extend(Composable)
   end
 
   describe "identity" do

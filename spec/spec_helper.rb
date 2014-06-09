@@ -10,7 +10,7 @@ end
 
 module Composable
   def compose(f, g)
-    ->(*args){f.call(g.call(*args))}
+    ->(x){f.(g.(x))}
   end
 
   def *(g)
