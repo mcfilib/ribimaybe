@@ -13,6 +13,8 @@ module Ribimaybe
         "Nothing"
       end
 
+      alias_method :inspect, :to_s
+
       # No operation. Always returns the default value.
       #
       Contract Any, Proc => Any
@@ -49,9 +51,13 @@ module Ribimaybe
         @value = value
       end
 
+      # Just string representation.
+      #
       def to_s
         "Just(#{@value.inspect})"
       end
+
+      alias_method :inspect, :to_s
 
       # Compares a Just to another Maybe.
       #
