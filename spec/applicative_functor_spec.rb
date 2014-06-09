@@ -60,7 +60,7 @@ describe "Applicative Instance" do
 
     context "when i have just :x" do
       it do
-        expect(pure(&f).apply(pure(:x))).to eq(pure(:x))
+        expect(pure(&f).apply(pure(:x))).to eq(pure(f.(:x)))
       end
     end
   end
