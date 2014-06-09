@@ -11,7 +11,7 @@ describe "Functor Instance" do
     ->(x){ x }.extend(Composable)
   end
 
-  describe "identity law" do
+  describe "identity" do
     context "when i have nothing" do
       it "should give me back nothing" do
         expect(Nothing.map(&f)).to eq(Nothing)
@@ -25,7 +25,7 @@ describe "Functor Instance" do
     end
   end
 
-  describe "composition law" do
+  describe "composition" do
     context "when i have nothing" do
       it "should be closed under composition" do
         expect(Nothing.map(&(f * g))).to eq(Nothing.map(&g).map(&f))
