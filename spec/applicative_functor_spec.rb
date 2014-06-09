@@ -70,6 +70,20 @@ describe "Applicative Instance" do
     end
   end
 
+  describe "map" do
+    context "when i have nothing" do
+      it do
+        expect(Nothing.map(&f)).to eq(pure(&f).apply(Nothing))
+      end
+    end
+
+    context "when i have just :x" do
+      it do
+        expect(Just(:x).map(&f)).to eq(pure(&f).apply(Just(:x)))
+      end
+    end
+  end
+
   describe "#pure" do
     context "when i provide a nil" do
       it "should give me back nothing" do
