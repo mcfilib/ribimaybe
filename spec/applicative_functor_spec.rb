@@ -57,6 +57,12 @@ describe "Applicative Instance" do
   end
 
   describe "homomorphism" do
+    context "when i have nothing" do
+      it do
+        expect(pure(&f).apply(Nothing)).to eq(Nothing)
+      end
+    end
+
     context "when i have just :x" do
       it do
         expect(pure(&f).apply(pure(:x))).to eq(pure(:x))
