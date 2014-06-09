@@ -8,13 +8,11 @@ describe "Functor Instance" do
   end
 
   let(:f) do
-    rand = SecureRandom.base64(100)
-    ->(x){ rand }.extend(Composable)
+    ->(x){ ->(y) { x } }.(SecureRandom.base64(1000)).extend(Composable)
   end
 
   let(:g) do
-    rand = SecureRandom.base64(100)
-    ->(y){ rand }.extend(Composable)
+    ->(x){ ->(y) { x } }.(SecureRandom.base64(1000)).extend(Composable)
   end
 
   describe "identity" do
