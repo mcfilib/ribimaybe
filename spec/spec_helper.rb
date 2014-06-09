@@ -7,3 +7,13 @@ require "rubygems"
 
 RSpec.configure do |config|
 end
+
+module Composable
+  def compose(f, g)
+    ->(*args){f.call(g.call(*args))}
+  end
+
+  def *(g)
+    compose(self, g)
+  end
+end
