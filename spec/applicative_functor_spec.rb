@@ -35,7 +35,7 @@ describe "Applicative Instance" do
 
     context "when i have just :x" do
       it "should give me back just :x" do
-        expect(pure(&id).apply(Just(:x))).to eq(Just(:x))
+        expect(pure(&id).apply(pure(:x))).to eq(pure(:x))
       end
     end
   end
@@ -51,8 +51,8 @@ describe "Applicative Instance" do
 
     context "when i have just :x" do
       it do
-        lhs = pure(&dot).apply(pure(&f)).apply(pure(&g)).apply(Just(:x))
-        rhs = pure(&f).apply(pure(&g).apply(Just(:x)))
+        lhs = pure(&dot).apply(pure(&f)).apply(pure(&g)).apply(pure(:x))
+        rhs = pure(&f).apply(pure(&g).apply(pure(:x)))
         expect(lhs).to eq(rhs)
       end
     end
