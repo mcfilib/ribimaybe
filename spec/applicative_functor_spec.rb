@@ -12,6 +12,10 @@ describe "Applicative Instance" do
     ->(x){ x }
   end
 
+  let(:dot) do
+    ->(f, g){ ->(x){ f.(g.(x)) } }
+  end
+
   let(:f) do
     ->(x){ :x }.extend(Composable)
   end
@@ -30,6 +34,25 @@ describe "Applicative Instance" do
     context "when i have just :x" do
       it "should give me back just :x" do
         expect(pure(&id).apply(Just(:x))).to eq(Just(:x))
+      end
+    end
+  end
+
+
+  describe "composition" do
+    context "when i have nothing" do
+      it do
+        lhs = pure(&dot).apply(pure(&f)).apply(pure(&g)).apply(Nothing)
+        rhs = pure(&f).apply(pure(&g).apply(Nothing))
+        expect(lhs).to eq(rhs)
+      end
+    end
+
+    context "when i have just :x" do
+      it do
+        lhs = pure(&dot).apply(pure(&f)).apply(pure(&g)).apply(Just(:x))
+        rhs = pure(&f).apply(pure(&g).apply(Just(:x)))
+        expect(lhs).to eq(rhs)
       end
     end
   end
