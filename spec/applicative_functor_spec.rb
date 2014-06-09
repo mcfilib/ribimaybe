@@ -2,6 +2,38 @@ require "spec_helper"
 include Ribimaybe::Maybe
 
 describe "Applicative Instance" do
+
+ #  pure id <*> v = v                            -- Identity
+ #  pure (.) <*> u <*> v <*> w = u <*> (v <*> w) -- Composition
+ #  pure f <*> pure x = pure (f x)               -- Homomorphism
+ #  u <*> pure y = pure ($ y) <*> u              -- Interchange
+
+  let(:id) do
+    ->(x){ x }
+  end
+
+  let(:f) do
+    ->(y){ :y }.extend(Composable)
+  end
+
+  let(:g) do
+    ->(x){ :x }.extend(Composable)
+  end
+
+  describe "identity" do
+    context "when i have nothing" do
+      it "should give me back nothing" do
+        expect(pure(&id).apply(Nothing)).to eq(Nothing)
+      end
+    end
+
+    context "when i have just :x" do
+      it "should give me back just :x" do
+        expect(pure(&id).apply(Just(:x))).to eq(Just(:x))
+      end
+    end
+  end
+
   describe "#pure" do
     context "when i provide a nil" do
       it "should give me back nothing" do
