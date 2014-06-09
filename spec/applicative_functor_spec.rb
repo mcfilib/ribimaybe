@@ -3,6 +3,10 @@ include Ribimaybe::Maybe
 
 describe "Applicative Instance" do
 
+  let(:ap) do
+    ->(f, a){ f.(a) }.curry
+  end
+
   let(:id) do
     ->(x){ x }
   end
@@ -68,11 +72,13 @@ describe "Applicative Instance" do
   describe "interchange" do
     context "when i have nothing" do
       it do
+        expect(pure(&f).apply(Nothing)).to eq(pure(&ap.(f)).apply(Nothing))
       end
     end
 
     context "when i have just :x" do
       it do
+        expect(pure(&f).apply(pure(:x))).to eq(pure(&ap.(f)).apply(pure(:x)))
       end
     end
   end
