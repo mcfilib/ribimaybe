@@ -13,11 +13,11 @@ describe "Applicative Instance" do
   end
 
   let(:f) do
-    ->(y){ :y }.extend(Composable)
+    ->(x){ :x }.extend(Composable)
   end
 
   let(:g) do
-    ->(x){ :x }.extend(Composable)
+    ->(y){ :y }.extend(Composable)
   end
 
   describe "identity" do
