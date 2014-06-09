@@ -14,15 +14,13 @@ describe "Functor Instance" do
   describe "identity law" do
     context "when i have nothing" do
       it "should give me back nothing" do
-        result = Nothing.map(&f)
-        expect(result).to eq(Nothing)
+        expect(Nothing.map(&f)).to eq(Nothing)
       end
     end
 
     context "when i have just :x" do
       it "should give me back just :x" do
-        result = Just(:x).map(&f)
-        expect(result).to eq(Just(:x))
+        expect(Just(:x).map(&f)).to eq(Just(:x))
       end
     end
   end
