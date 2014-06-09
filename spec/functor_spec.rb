@@ -3,24 +3,28 @@ include Ribimaybe::Maybe
 
 describe "Functor Instance" do
 
+  let(:id) do
+    ->(x){ x }
+  end
+
   let(:f) do
-    ->(x){ x }.extend(Composable)
+    ->(y){ :y }.extend(Composable)
   end
 
   let(:g) do
-    ->(x){ x }.extend(Composable)
+    ->(x){ :x }.extend(Composable)
   end
 
   describe "identity" do
     context "when i have nothing" do
       it "should give me back nothing" do
-        expect(Nothing.map(&f)).to eq(Nothing)
+        expect(Nothing.map(&id)).to eq(Nothing)
       end
     end
 
     context "when i have just :x" do
       it "should give me back just :x" do
-        expect(Just(:x).map(&f)).to eq(Just(:x))
+        expect(Just(:x).map(&id)).to eq(Just(:x))
       end
     end
   end
