@@ -65,7 +65,6 @@ describe "Applicative Instance" do
     end
   end
 
-  #  u <*> pure y = pure ($ y) <*> u              -- Interchange
   describe "interchange" do
     context "when i have nothing" do
       it do
