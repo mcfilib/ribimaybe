@@ -12,11 +12,13 @@ describe "Applicative Instance" do
   end
 
   let(:f) do
-    ->(x){ :x }.extend(Composable)
+    rand = SecureRandom.base64(100)
+    ->(x){ rand }.extend(Composable)
   end
 
   let(:g) do
-    ->(y){ :y }.extend(Composable)
+    rand = SecureRandom.base64(100)
+    ->(y){ rand }.extend(Composable)
   end
 
   describe "identity" do
