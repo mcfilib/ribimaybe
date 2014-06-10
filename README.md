@@ -7,7 +7,7 @@
 ![](maybe.gif)
 
 A tiny Ruby library that provides a Maybe datatype which is a Functor, 
-Applicative Functor and Monad instance.
+Applicative Functor and Monad.
 
 ## Installation
 
