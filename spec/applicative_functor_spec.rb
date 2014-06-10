@@ -23,6 +23,7 @@ describe "Applicative Instance" do
     ->(x){ ->(y) { x } }.(SecureRandom.base64(1000)).extend(Composable)
   end
 
+  # pure id <*> v = v
   describe "identity" do
     context "when i have nothing" do
       it do
@@ -37,6 +38,7 @@ describe "Applicative Instance" do
     end
   end
 
+  # pure (.) <*> u <*> v <*> w = u <*> (v <*> w)
   describe "composition" do
     context "when i have nothing" do
       it do
@@ -55,6 +57,7 @@ describe "Applicative Instance" do
     end
   end
 
+  # pure f <*> pure x = pure (f x)
   describe "homomorphism" do
     context "when i have nothing" do
       it do
@@ -69,6 +72,7 @@ describe "Applicative Instance" do
     end
   end
 
+  # u <*> pure y = pure ($ y) <*> u
   describe "interchange" do
     context "when i have nothing" do
       it do
@@ -83,6 +87,7 @@ describe "Applicative Instance" do
     end
   end
 
+  # fmap f x = pure f <*> x
   describe "map" do
     context "when i have nothing" do
       it do
