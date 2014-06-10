@@ -4,9 +4,6 @@ include Ribimaybe::Maybe
 describe "Applicative Instance" do
 
   let(:ap) do
-    # TODO: passing a fn as an arg shouldn't need to be explicitly curried
-    #       like this.
-    #
     ->(f, a){ f.(a) }.curry
   end
 
@@ -26,20 +23,22 @@ describe "Applicative Instance" do
     ->(x){ ->(y) { x } }.(SecureRandom.base64(1000)).extend(Composable)
   end
 
+  # pure id <*> v = v
   describe "identity" do
     context "when i have nothing" do
-      it "should give me back nothing" do
+      it do
         expect(pure(&id).apply(Nothing)).to eq(Nothing)
       end
     end
 
     context "when i have just :x" do
-      it "should give me back just :x" do
+      it do
         expect(pure(&id).apply(pure(:x))).to eq(pure(:x))
       end
     end
   end
 
+  # pure (.) <*> u <*> v <*> w = u <*> (v <*> w)
   describe "composition" do
     context "when i have nothing" do
       it do
@@ -58,6 +57,7 @@ describe "Applicative Instance" do
     end
   end
 
+  # pure f <*> pure x = pure (f x)
   describe "homomorphism" do
     context "when i have nothing" do
       it do
@@ -72,6 +72,7 @@ describe "Applicative Instance" do
     end
   end
 
+  # u <*> pure y = pure ($ y) <*> u
   describe "interchange" do
     context "when i have nothing" do
       it do
@@ -86,6 +87,7 @@ describe "Applicative Instance" do
     end
   end
 
+  # fmap f x = pure f <*> x
   describe "map" do
     context "when i have nothing" do
       it do
