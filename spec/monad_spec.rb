@@ -1,6 +1,10 @@
 require "spec_helper"
 include Ribimaybe::Maybe
 describe "Monad Instance" do
+  let(:id) do
+    ->(x) { rturn(x) }
+  end
+
   let(:f) do
     ->(x){ ->(y) { rturn(x) } }.(SecureRandom.base64(1000))
   end
@@ -13,13 +17,13 @@ describe "Monad Instance" do
   describe "left identity" do
     context "when i have nothing" do
       it do
-        expect(Nothing.bind(&f)).to eq(Nothing)
+        expect(Nothing.bind(&id)).to eq(Nothing)
       end
     end
 
     context "when i have just :x" do
       it do
-        expect(rturn(:x).bind(&f)).to eq(f.(:a))
+        expect(rturn(:x).bind(&id)).to eq(id.(:x))
       end
     end
   end
@@ -28,13 +32,13 @@ describe "Monad Instance" do
   describe "right identity" do
     context "when i have nothing" do
       it do
-        expect(Nothing.bind { |x| rturn(x) }).to eq(Nothing)
+        expect(Nothing.bind(&id)).to eq(Nothing)
       end
     end
 
     context "when i have just :x" do
       it do
-        expect(Just(:x).bind { |x| rturn(x) }).to eq(Just(:x))
+        expect(Just(:x).bind(&id)).to eq(Just(:x))
       end
     end
   end
