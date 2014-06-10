@@ -1,8 +1,6 @@
 require "spec_helper"
 include Ribimaybe::Maybe
-
 describe "Monad Instance" do
-
   let(:f) do
     ->(x){ ->(y) { rturn(x) } }.(SecureRandom.base64(1000))
   end
@@ -59,5 +57,4 @@ describe "Monad Instance" do
       end
     end
   end
-
 end

@@ -1,8 +1,6 @@
 require "spec_helper"
 include Ribimaybe::Maybe
-
 describe "Functor Instance" do
-
   let(:id) do
     ->(x){ x }
   end
@@ -41,22 +39,6 @@ describe "Functor Instance" do
     context "when i have just :x" do
       it do
         expect(Just(:x).map(&(f * g))).to eq(Just(:x).map(&g).map(&f))
-      end
-    end
-  end
-
-  describe "#map" do
-    context "when i have nothing" do
-      it "should give me back nothing" do
-        result = Nothing.map { |x| x + 1 }
-        expect(result).to eq Nothing
-      end
-    end
-
-    context "when i have something" do
-      it "should apply the fn and we-wrap the value" do
-        result = Just(41).map { |x| x + 1 }
-        expect(result).to eq Just(42)
       end
     end
   end
