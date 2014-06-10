@@ -4,9 +4,6 @@ include Ribimaybe::Maybe
 describe "Applicative Instance" do
 
   let(:ap) do
-    # TODO: passing a fn as an arg shouldn't need to be explicitly curried
-    #       like this.
-    #
     ->(f, a){ f.(a) }.curry
   end
 
