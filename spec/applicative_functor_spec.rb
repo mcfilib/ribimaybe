@@ -25,13 +25,13 @@ describe "Applicative Instance" do
 
   describe "identity" do
     context "when i have nothing" do
-      it "should give me back nothing" do
+      it do
         expect(pure(&id).apply(Nothing)).to eq(Nothing)
       end
     end
 
     context "when i have just :x" do
-      it "should give me back just :x" do
+      it do
         expect(pure(&id).apply(pure(:x))).to eq(pure(:x))
       end
     end
