@@ -16,11 +16,11 @@ describe "Applicative Instance" do
   end
 
   let(:f) do
-    ->(x){ ->(y) { x } }.(SecureRandom.base64(1000)).extend(Composable)
+    ->(x){ ->(y) { x } }.(SecureRandom.base64(1000))
   end
 
   let(:g) do
-    ->(x){ ->(y) { x } }.(SecureRandom.base64(1000)).extend(Composable)
+    ->(x){ ->(y) { x } }.(SecureRandom.base64(1000))
   end
 
   # pure id <*> v = v
