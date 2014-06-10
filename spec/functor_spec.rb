@@ -15,6 +15,7 @@ describe "Functor Instance" do
     ->(x){ ->(y) { x } }.(SecureRandom.base64(1000)).extend(Composable)
   end
 
+  # fmap id = id
   describe "identity" do
     context "when i have nothing" do
       it do
@@ -29,6 +30,7 @@ describe "Functor Instance" do
     end
   end
 
+  # fmap (f . g) = fmap f . fmap g
   describe "composition" do
     context "when i have nothing" do
       it do
