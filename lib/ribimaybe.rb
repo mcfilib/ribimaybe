@@ -142,7 +142,7 @@ module Ribimaybe
       #   rturn(x + x)
       # end # => Just(2)
       #
-      Contract Proc => Just
+      Contract Proc => Or[Nothing, Just]
       def bind(&fn)
         fn.curry.(@value)
       end
