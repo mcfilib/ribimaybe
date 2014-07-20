@@ -4,6 +4,11 @@ module Ribimaybe
   module Maybe
     include Contracts
 
+    # Hack to ensure constant is available to Ruby contracts.
+    #
+    module Nothing; end
+    class  Just;    end
+
     module Nothing
       include Contracts
 
@@ -14,6 +19,15 @@ module Ribimaybe
       end
 
       alias_method :inspect, :to_s
+
+      # Compares a Just to another Maybe.
+      #
+      # ==== Attributes
+      #
+      Contract Or[Nothing, Just] => Bool
+      def self.===(other)
+        self == other
+      end
 
       # No operation. Always returns the default value.
       #
