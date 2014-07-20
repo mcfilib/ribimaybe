@@ -11,4 +11,33 @@ describe "Bugs" do
       expect(result).to eq(Nothing)
     end
   end
+
+  describe "issue18" do
+    context "when i have nothing" do
+      it do
+        x = Nothing
+        result = case x
+                 when Just
+                   binding.pry
+                   x.maybe(:x) { |x| x }
+                 when Nothing
+                   :nothing
+                 end
+        expect(result).to eq(:nothing)
+      end
+    end
+
+    context "when i have just :x" do
+      it do
+        x = Just(:x)
+        result = case x
+                 when Just
+                   x.maybe(:x) { |x| x }
+                 when Nothing
+                   :nothing
+                 end
+        expect(result).to eq(:x)
+      end
+    end
+  end
 end
