@@ -12,7 +12,7 @@ describe "Bugs" do
     end
   end
 
-  describe "issue18" do
+  describe "issue19" do
     context "when i have nothing" do
       it do
         x = Nothing
