@@ -18,7 +18,6 @@ describe "Bugs" do
         x = Nothing
         result = case x
                  when Just
-                   binding.pry
                    x.maybe(:x) { |x| x }
                  when Nothing
                    :nothing
