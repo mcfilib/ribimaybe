@@ -24,6 +24,8 @@ module Ribimaybe
       #
       # ==== Attributes
       #
+      # * +other+ - The other Maybe value.
+      #
       Contract Or[Nothing, Just] => Bool
       def self.===(other)
         self == other
