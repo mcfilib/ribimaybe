@@ -20,7 +20,7 @@ module Ribimaybe
 
       alias_method :inspect, :to_s
 
-      # Compares a Just to another Maybe.
+      # Compares a Nothing to another Maybe.
       #
       # ==== Attributes
       #
