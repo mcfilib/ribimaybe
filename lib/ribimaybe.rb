@@ -6,13 +6,6 @@ module Ribimaybe
 
     module Nothing
       include Contracts
-    end
-
-    class Just
-      include Contracts
-    end
-
-    module Nothing
 
       # Nothing string representation.
       #
@@ -21,6 +14,21 @@ module Ribimaybe
       end
 
       alias_method :inspect, :to_s
+    end
+
+    class Just
+      include Contracts
+
+      # Just string representation.
+      #
+      def to_s
+        "Just(#{@value.inspect})"
+      end
+
+      alias_method :inspect, :to_s
+    end
+
+    module Nothing
 
       # Compares a Nothing to another Maybe.
       #
@@ -67,14 +75,6 @@ module Ribimaybe
       def initialize(value)
         @value = value
       end
-
-      # Just string representation.
-      #
-      def to_s
-        "Just(#{@value.inspect})"
-      end
-
-      alias_method :inspect, :to_s
 
       # Compares a Just to another Maybe.
       #
