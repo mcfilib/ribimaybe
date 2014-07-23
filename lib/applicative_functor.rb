@@ -1,5 +1,3 @@
-require "contracts"
-
 module Ribimaybe
   module Maybe
     module Nothing
