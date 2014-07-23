@@ -4,13 +4,15 @@ module Ribimaybe
   module Maybe
     include Contracts
 
-    # Hack to ensure constant is available to Ruby contracts.
-    #
-    module Nothing; end
-    class  Just;    end
-
     module Nothing
       include Contracts
+    end
+
+    class Just
+      include Contracts
+    end
+
+    module Nothing
 
       # Nothing string representation.
       #
@@ -61,7 +63,6 @@ module Ribimaybe
     end
 
     class Just
-      include Contracts
 
       def initialize(value)
         @value = value
