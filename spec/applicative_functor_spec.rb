@@ -99,4 +99,12 @@ describe "Applicative Instance" do
       end
     end
   end
+
+  describe "variadic apply" do
+    context "when i have :x and :y" do
+      it do
+        expect(Just { |x, y| [x,y] }.apply(pure(:x), pure(:y))).to eq Just([:x, :y])
+      end
+    end
+  end
 end
