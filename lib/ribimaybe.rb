@@ -59,8 +59,12 @@ module Ribimaybe
       # No operation. Always returns Nothing.
       #
       Contract Proc => Nothing
-      def self.bind(&_)
+      def self.bind(fn = nil, &_)
         self
+      end
+
+      class << self
+        alias_method :>=, :bind
       end
     end
 
@@ -165,9 +169,11 @@ module Ribimaybe
       # end # => Just(2)
       #
       Contract Proc => Or[Nothing, Just]
-      def bind(&fn)
-        fn.curry.(@value)
+      def bind(fn = nil, &block)
+        (fn || block).curry.(@value)
       end
+
+      alias_method :>=, :bind
     end
 
     # Converts nil to Nothing or lifts value into a Just. Accepts a optional
