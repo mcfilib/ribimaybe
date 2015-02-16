@@ -59,8 +59,12 @@ module Ribimaybe
       # No operation. Always returns Nothing.
       #
       Contract Proc => Nothing
-      def self.bind(&_)
+      def self.bind(fn = nil, &_)
         self
+      end
+
+      class << self
+        alias_method :>=, :bind
       end
     end
 
