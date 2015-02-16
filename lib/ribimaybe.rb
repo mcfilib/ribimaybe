@@ -146,6 +146,8 @@ module Ribimaybe
         value.map { |v| @value.curry.(v) }
       end
 
+      alias_method :>>, :apply
+
       # Applies fn to value inside Just (note contract constraint).
       #
       # ==== Attributes
