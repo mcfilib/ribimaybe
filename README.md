@@ -91,7 +91,15 @@ end # => Just(42)
 Nothing.bind do |x|
   rturn(x * x)
 end # => Nothing
+
+# We even have >= but you need to pass a Proc or a lambda.
+Just(42) >= -> (x) do
+  rturn(x - 21) >= -> (y) do
+    if x * x > 100 then rturn(y) else rturn(x) end
+  end
+end
 ```
+
 ## Contributing
 
 1. Fork it
