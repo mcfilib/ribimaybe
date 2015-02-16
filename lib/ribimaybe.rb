@@ -52,6 +52,10 @@ module Ribimaybe
         self
       end
 
+      class << self
+        alias_method :>>, :apply
+      end
+
       # No operation. Always returns Nothing.
       #
       Contract Proc => Nothing
