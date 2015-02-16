@@ -69,6 +69,9 @@ end.apply(pure(42)).apply(pure(42)) # => Just(1764)
 Just do |x|
   x * x
 end.apply(Nothing) # => Nothing
+
+# We can't define <*> but we can define >>
+Just { |x, y| x * y } >> pure(42) >> pure(42) # => Just(1764)
 ```
 
 ### Monad [\[info\]](http://www.learnyouahaskell.com/a-fistful-of-monads)
