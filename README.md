@@ -8,7 +8,7 @@
 
 ![](maybe.gif)
 
-A tiny Ruby library that provides a Maybe datatype which is a Functor, 
+A tiny Ruby library that provides a Maybe datatype which is a Functor,
 Applicative Functor and Monad.
 
 ## Installation
@@ -27,8 +27,8 @@ Or install it yourself as:
 
 ## Usage
 
-This is a small library and so it doesn't offer lots of creature comforts. The 
-one escape hatch it does offer is the ability to convert `nil` into `Nothing`. 
+This is a small library and so it doesn't offer lots of creature comforts. The
+one escape hatch it does offer is the ability to convert `nil` into `Nothing`.
 
 ``` ruby
 include Ribimaybe::Maybe
@@ -37,13 +37,13 @@ Maybe(42)  # => Just(42)
 Maybe(nil) # => Nothing
 ```
 
-And that's it, once you have lifted your value into a `Maybe` you can treat it 
+And that's it, once you have lifted your value into a `Maybe` you can treat it
 as a `Functor`, `Applicative Functor` or `Monad`. If you want to pull your value
 out of a `Maybe`, we got you covered too.
 
 ``` ruby
 Just(42).maybe(false) { |x| x == 42 } # => true
-Nothing.maybe(false)  { |x| x == 42 } # => false 
+Nothing.maybe(false)  { |x| x == 42 } # => false
 ```
 
 ### Functor [\[info\]](http://learnyouahaskell.com/functors-applicative-functors-and-monoids)
@@ -61,7 +61,7 @@ Nothing.map  { |x| x * x } # => Nothing
 ``` ruby
 include Ribimaybe::Maybe
 
-# Wrap functions inside functors and apply them to other functors! 
+# Wrap functions inside functors and apply them to other functors!
 Just do |x, y|
   x * y
 end.apply(pure(42)).apply(pure(42)) # => Just(1764)
@@ -70,7 +70,8 @@ Just do |x|
   x * x
 end.apply(Nothing) # => Nothing
 
-# We can't define <*> but we can define >>
+# We can't define <*> but we can define a different operator with the same
+# semantics!
 Just { |x, y| x * y } >> pure(42) >> pure(42) # => Just(1764)
 ```
 
