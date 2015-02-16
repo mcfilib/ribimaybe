@@ -52,6 +52,10 @@ module Ribimaybe
         self
       end
 
+      class << self
+        alias_method :>>, :apply
+      end
+
       # No operation. Always returns Nothing.
       #
       Contract Proc => Nothing
@@ -145,6 +149,8 @@ module Ribimaybe
       def apply(value)
         value.map { |v| @value.curry.(v) }
       end
+
+      alias_method :>>, :apply
 
       # Applies fn to value inside Just (note contract constraint).
       #
