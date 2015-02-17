@@ -165,7 +165,7 @@ module Ribimaybe
       # ==== Examples
       #
       # Just(1).bind do |x|
-      #   rturn(x + x)
+      #   lift(x + x)
       # end # => Just(2)
       #
       Contract Proc => Or[Nothing, Just]
@@ -198,5 +198,6 @@ module Ribimaybe
     alias_method :Just,  :Maybe
     alias_method :pure,  :Maybe
     alias_method :rturn, :Maybe
+    alias_method :lift,  :Maybe
   end
 end
