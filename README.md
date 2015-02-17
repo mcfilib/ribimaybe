@@ -82,20 +82,20 @@ include Ribimaybe::Maybe
 
 # Chain together computations and pretend you're a Haskeller.
 Just(42).bind do |x|
-  rturn(x - 21).bind do |y|
-    if x * x > 100 then rturn(x) else rturn(y) end
+  lift(x - 21).bind do |y|
+    if x * x > 100 then lift(x) else lift(y) end
   end
 end # => Just(42)
 
 # You guessed it! If have Nothing, you get Nothing.
 Nothing.bind do |x|
-  rturn(x * x)
+  lift(x * x)
 end # => Nothing
 
 # We even have >= but you need to pass a Proc or a lambda.
 Just(42) >= -> (x) do
-  rturn(x - 21) >= -> (y) do
-    if x * x > 100 then rturn(x) else rturn(y) end
+  lift(x - 21) >= -> (y) do
+    if x * x > 100 then lift(x) else lift(y) end
   end
 end # => Just(42)
 ```

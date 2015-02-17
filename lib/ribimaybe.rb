@@ -165,7 +165,7 @@ module Ribimaybe
       # ==== Examples
       #
       # Just(1).bind do |x|
-      #   rturn(x + x)
+      #   lift(x + x)
       # end # => Just(2)
       #
       Contract Proc => Or[Nothing, Just]
