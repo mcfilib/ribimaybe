@@ -198,5 +198,6 @@ module Ribimaybe
     alias_method :Just,  :Maybe
     alias_method :pure,  :Maybe
     alias_method :rturn, :Maybe
+    alias_method :lift,  :Maybe
   end
 end
