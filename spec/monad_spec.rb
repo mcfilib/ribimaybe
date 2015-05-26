@@ -6,15 +6,15 @@ describe "Monad Instance" do
   end
 
   let(:lifted_id) do
-    ->(x) { id.(rturn(x)) }
+    ->(x) { id.(unit(x)) }
   end
 
   let(:f) do
-    ->(x){ ->(y) { rturn(x) } }.(SecureRandom.base64(1000))
+    ->(x){ ->(y) { unit(x) } }.(SecureRandom.base64(1000))
   end
 
   let(:g) do
-    ->(x){ ->(y) { rturn(x) } }.(SecureRandom.base64(1000))
+    ->(x){ ->(y) { unit(x) } }.(SecureRandom.base64(1000))
   end
 
   [:bind, :>=].each do |m|
@@ -28,7 +28,7 @@ describe "Monad Instance" do
 
       context "when i have just :x" do
         it do
-          expect(rturn(:x).public_send(m, &lifted_id)).to eq(lifted_id.(:x))
+          expect(unit(:x).public_send(m, &lifted_id)).to eq(lifted_id.(:x))
         end
       end
     end
