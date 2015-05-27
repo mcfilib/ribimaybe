@@ -92,7 +92,8 @@ Nothing.bind do |x|
   unit(x * x)
 end # => Nothing
 
-# We even have >= but you need to pass a Proc or a lambda.
+# We even have >>= but it's called >= and you you need to pass a Proc or a
+# lambda.
 Just(42) >= -> (x) do
   unit(x - 21) >= -> (y) do
     if x * x > 100 then unit(x) else unit(y) end
