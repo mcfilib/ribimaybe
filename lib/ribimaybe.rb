@@ -138,8 +138,10 @@ module Ribimaybe
       #   x + x
       # end.apply(Just(1)) # => Just(2)
       Contract Or[Nothing, Just] => Or[Nothing, Just]
-      def apply(value)
-        value.map { |v| @value.curry.(v) }
+      def apply(*values)
+        values.map do |value|
+          value.map { |v| @value = @value.curry.(v) }
+        end.last
       end
 
       alias_method :>>, :apply
