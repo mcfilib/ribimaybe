@@ -4,7 +4,6 @@
 
 [![Gem Version](https://badge.fury.io/rb/ribimaybe.svg)](http://badge.fury.io/rb/ribimaybe)
 [![Travis](https://travis-ci.org/mcfilib/ribimaybe.svg?branch=master)](http://travis-ci.org/mcfilib/ribimaybe)
-[![Code Climate](https://codeclimate.com/github/mcfilib/ribimaybe.png)](https://codeclimate.com/github/mcfilib/ribimaybe)
 
 ![](maybe.gif)
 
