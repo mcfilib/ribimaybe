@@ -3,8 +3,8 @@
 > "Flavouring the ocean with a teaspoon of sugar."
 
 [![Gem Version](https://badge.fury.io/rb/ribimaybe.svg)](http://badge.fury.io/rb/ribimaybe)
-[![Travis](https://travis-ci.org/filib/ribimaybe.svg?branch=master)](http://travis-ci.org/filib/ribimaybe)
-[![Code Climate](https://codeclimate.com/github/unsymbol/ribimaybe.png)](https://codeclimate.com/github/unsymbol/ribimaybe)
+[![Travis](https://travis-ci.org/mcfilib/ribimaybe.svg?branch=master)](http://travis-ci.org/mcfilib/ribimaybe)
+[![Code Climate](https://codeclimate.com/github/mcfilib/ribimaybe.png)](https://codeclimate.com/github/mcfilib/ribimaybe)
 
 ![](maybe.gif)
 
